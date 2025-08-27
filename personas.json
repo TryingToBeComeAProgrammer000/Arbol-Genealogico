@@ -1,0 +1,90 @@
+[
+  {
+    "cedula": "200000010",
+    "nombre": "Miguel",
+    "apellido1": "Ramirez",
+    "apellido2": "Morales",
+    "fecha_nacimiento": "2004-02-15",
+    "fecha_fallecimiento": null,
+    "genero": "M",
+    "lugar_residencia": "San José",
+    "estado_civil": "Soltero"
+  },
+  {
+    "cedula": "200000011",
+    "nombre": "Elena",
+    "apellido1": "Morales",
+    "apellido2": "Jimenez",
+    "fecha_nacimiento": "2004-11-12",
+    "fecha_fallecimiento": null,
+    "genero": "F",
+    "lugar_residencia": "San José",
+    "estado_civil": "Soltera"
+  },
+  {
+    "cedula": "200000001",
+    "nombre": "Alberto",
+    "apellido1": "Ramirez",
+    "apellido2": "Castro",
+    "fecha_nacimiento": "2004-05-10",
+    "fecha_fallecimiento": null,
+    "genero": "M",
+    "lugar_residencia": "San José",
+    "estado_civil": "Soltero"
+  },
+  {
+    "cedula": "200000002",
+    "nombre": "Beatriz",
+    "apellido1": "Morales",
+    "apellido2": "Jimenez",
+    "fecha_nacimiento": "2004-09-15",
+    "fecha_fallecimiento": null,
+    "genero": "F",
+    "lugar_residencia": "San José",
+    "estado_civil": "Soltera"
+  },
+  {
+    "cedula": "200000003",
+    "nombre": "Carlos",
+    "apellido1": "Ramirez",
+    "apellido2": "Morales",
+    "fecha_nacimiento": "2004-03-20",
+    "fecha_fallecimiento": null,
+    "genero": "M",
+    "lugar_residencia": "Alajuela",
+    "estado_civil": "Soltero"
+  },
+  {
+    "cedula": "200000004",
+    "nombre": "Diana",
+    "apellido1": "Vega",
+    "apellido2": "Lopez",
+    "fecha_nacimiento": "2004-07-25",
+    "fecha_fallecimiento": null,
+    "genero": "F",
+    "lugar_residencia": "Alajuela",
+    "estado_civil": "Soltera"
+  },
+  {
+    "cedula": "200000006",
+    "nombre": "Hugo",
+    "apellido1": "Vega",
+    "apellido2": "Lopez",
+    "fecha_nacimiento": "2004-04-10",
+    "fecha_fallecimiento": null,
+    "genero": "M",
+    "lugar_residencia": "Alajuela",
+    "estado_civil": "Soltero"
+  },
+  {
+    "cedula": "200000005",
+    "nombre": "Luis",
+    "apellido1": "Ramirez",
+    "apellido2": "Vega",
+    "fecha_nacimiento": "2004-03-12",
+    "fecha_fallecimiento": null,
+    "genero": "M",
+    "lugar_residencia": "Heredia",
+    "estado_civil": "Soltero"
+  }
+]

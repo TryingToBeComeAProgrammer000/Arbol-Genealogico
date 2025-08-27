@@ -1,0 +1,269 @@
+{
+  "ultima_actualizacion": "2025-08-24T20:30:37.508282",
+  "relaciones_por_persona": {
+    "200000010": {
+      "nombre": "Miguel Ramirez Morales",
+      "fecha_nacimiento": "2004-02-15",
+      "fecha_fallecimiento": null,
+      "genero": "M",
+      "lugar_residencia": "San José",
+      "estado_civil": "Soltero",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000011": {
+      "nombre": "Elena Morales Jimenez",
+      "fecha_nacimiento": "2004-11-12",
+      "fecha_fallecimiento": null,
+      "genero": "F",
+      "lugar_residencia": "San José",
+      "estado_civil": "Soltera",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000001": {
+      "nombre": "Alberto Ramirez Castro",
+      "fecha_nacimiento": "2004-05-10",
+      "fecha_fallecimiento": null,
+      "genero": "M",
+      "lugar_residencia": "San José",
+      "estado_civil": "Soltero",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000002": {
+      "nombre": "Beatriz Morales Jimenez",
+      "fecha_nacimiento": "2004-09-15",
+      "fecha_fallecimiento": null,
+      "genero": "F",
+      "lugar_residencia": "San José",
+      "estado_civil": "Soltera",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000003": {
+      "nombre": "Carlos Ramirez Morales",
+      "fecha_nacimiento": "2004-03-20",
+      "fecha_fallecimiento": null,
+      "genero": "M",
+      "lugar_residencia": "Alajuela",
+      "estado_civil": "Soltero",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000004": {
+      "nombre": "Diana Vega Lopez",
+      "fecha_nacimiento": "2004-07-25",
+      "fecha_fallecimiento": null,
+      "genero": "F",
+      "lugar_residencia": "Alajuela",
+      "estado_civil": "Soltera",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000006": {
+      "nombre": "Hugo Vega Lopez",
+      "fecha_nacimiento": "2004-04-10",
+      "fecha_fallecimiento": null,
+      "genero": "M",
+      "lugar_residencia": "Alajuela",
+      "estado_civil": "Soltero",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "200000005": {
+      "nombre": "Luis Ramirez Vega",
+      "fecha_nacimiento": "2004-03-12",
+      "fecha_fallecimiento": null,
+      "genero": "M",
+      "lugar_residencia": "Heredia",
+      "estado_civil": "Soltero",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "pareja": null,
+        "hermanos": [],
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "primos_segundos": [],
+        "bisabuelos": [],
+        "bisnietos": [],
+        "sobrinos_nietos": [],
+        "tios_abuelos": [],
+        "primos_hermanos": [],
+        "primos_politicos": [],
+        "generacion": 1
+      }
+    },
+    "203330333": {
+      "nombre": "Persona 203330333",
+      "relaciones": {
+        "padres": [
+          "201110111"
+        ],
+        "hijos": [],
+        "hermanos": [],
+        "pareja": null,
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
+    },
+    "201110111": {
+      "nombre": "Persona 201110111",
+      "relaciones": {
+        "padres": [],
+        "hijos": [
+          "203330333"
+        ],
+        "hermanos": [],
+        "pareja": null,
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
+    }
+  },
+  "registros_relaciones": [
+    {
+      "persona_id": "203330333",
+      "relacion": "padre",
+      "con": "201110111",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201110111",
+      "relacion": "hijo",
+      "con": "203330333",
+      "tipo": "biológico"
+    }
+  ]
+}

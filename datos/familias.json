@@ -1,0 +1,357 @@
+{
+  "familias": {
+    "FAM001": {
+      "id": "FAM001",
+      "nombre": "Morales",
+      "miembros": [
+        {
+          "cedula": "201110111",
+          "nombre": "Kevin Morales Campos",
+          "apellido1": "Morales",
+          "apellido2": "Campos",
+          "fecha_nacimiento": "2005-06-15",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-19",
+          "fecha_actualizacion": "2025-08-25"
+        },
+        {
+          "cedula": "202220222",
+          "nombre": "Alberto Arce Campos",
+          "apellido1": "Arce",
+          "apellido2": "Campos",
+          "fecha_nacimiento": "2005-11-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Unión Libre",
+          "fecha_registro": "2025-08-19",
+          "fecha_actualizacion": "2025-08-25"
+        },
+        {
+          "cedula": "203330333",
+          "nombre": "Maria",
+          "apellido1": "Arce",
+          "apellido2": "Morales",
+          "fecha_nacimiento": "1980-11-23",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Divorciado",
+          "fecha_registro": "2025-08-19"
+        },
+        {
+          "cedula": "204530644",
+          "nombre": "Ryan Morales Arce",
+          "apellido1": "Morales",
+          "apellido2": "Arce",
+          "fecha_nacimiento": "2004-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Cartago",
+          "estado_civil": "Separado",
+          "fecha_registro": "2025-08-25"
+        }
+      ],
+      "fecha_creacion": "2025-08-19",
+      "fecha_actualizacion": "2025-08-25"
+    },
+    "FAM002": {
+      "id": "FAM002",
+      "nombre": "Jimenez",
+      "miembros": [
+        {
+          "cedula": "200770999",
+          "nombre": "Carla Jimena Jimenez Ordonez",
+          "apellido1": "Jimena",
+          "apellido2": "Jimenez",
+          "fecha_nacimiento": "2004-05-07",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Cartago",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-24"
+        }
+      ],
+      "fecha_creacion": "2025-08-24",
+      "fecha_actualizacion": "2025-08-24"
+    },
+    "FAM003": {
+      "id": "FAM003",
+      "nombre": "Solis",
+      "miembros": [
+        {
+          "cedula": "201230555",
+          "nombre": "Misael Madriz Araya",
+          "apellido1": "Madriz",
+          "apellido2": "Araya",
+          "fecha_nacimiento": "1922-01-01",
+          "fecha_fallecimiento": "1999",
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25",
+          "fecha_actualizacion": "2025-08-25"
+        },
+        {
+          "cedula": "201230556",
+          "nombre": "Custodia Salas Ugalde",
+          "apellido1": "Salas",
+          "apellido2": "Ugalde",
+          "fecha_nacimiento": "1929-01-01",
+          "fecha_fallecimiento": "1979",
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25",
+          "fecha_actualizacion": "2025-08-25"
+        },
+        {
+          "cedula": "201230557",
+          "nombre": "Danilo Solis Rodriguez",
+          "apellido1": "Solis",
+          "apellido2": "Rodriguez",
+          "fecha_nacimiento": "1943-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Viudo",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230558",
+          "nombre": "Gladys Nuñez Salaz",
+          "apellido1": "Nuñez",
+          "apellido2": "Salaz",
+          "fecha_nacimiento": "1951-01-01",
+          "fecha_fallecimiento": "2018",
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "No especificado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230559",
+          "nombre": "Braulio Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1989-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230600",
+          "nombre": "Edgardo Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1985-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230601",
+          "nombre": "Daniel Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1982-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Divorciado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230602",
+          "nombre": "Maria Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1979-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Separado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230603",
+          "nombre": "Jose Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1978-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230604",
+          "nombre": "Luis Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1969-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230605",
+          "nombre": "Willian Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1974-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Divorciado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230606",
+          "nombre": "Sonia Solis Nuñez",
+          "apellido1": "Solis",
+          "apellido2": "Nuñez",
+          "fecha_nacimiento": "1972-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Divorciado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230607",
+          "nombre": "Bernal Vargas Solis",
+          "apellido1": "Vargas",
+          "apellido2": "Solis",
+          "fecha_nacimiento": "2005-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230608",
+          "nombre": "Josue Solis Gamboa",
+          "apellido1": "Solis",
+          "apellido2": "Gamboa",
+          "fecha_nacimiento": "2004-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230609",
+          "nombre": "Jose Solis Gamboa",
+          "apellido1": "Solis",
+          "apellido2": "Gamboa",
+          "fecha_nacimiento": "2006-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Unión Libre",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230610",
+          "nombre": "Jessica Gamboa Paniagua",
+          "apellido1": "Gamboa",
+          "apellido2": "Paniagua",
+          "fecha_nacimiento": "1985-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "201230611",
+          "nombre": "Johana Calderon",
+          "apellido1": "Calderon",
+          "apellido2": "",
+          "fecha_nacimiento": "1989-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Casado",
+          "fecha_registro": "2025-08-26"
+        },
+        {
+          "cedula": "201230612",
+          "nombre": "Kenda Solis Calderon",
+          "apellido1": "Solis",
+          "apellido2": "Calderon",
+          "fecha_nacimiento": "2011-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-26"
+        },
+        {
+          "cedula": "201230613",
+          "nombre": "Mayra Hurtado",
+          "apellido1": "Hurtado",
+          "apellido2": "",
+          "fecha_nacimiento": "1975-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-26"
+        },
+        {
+          "cedula": "201230614",
+          "nombre": "Fabian Solis Hurtado",
+          "apellido1": "Solis",
+          "apellido2": "Hurtado",
+          "fecha_nacimiento": "2014-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-26"
+        },
+        {
+          "cedula": "201230615",
+          "nombre": "Bernal Vargas Quesada",
+          "apellido1": "Vargas",
+          "apellido2": "Quesada",
+          "fecha_nacimiento": "1957-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Separado",
+          "fecha_registro": "2025-08-26"
+        },
+        {
+          "cedula": "201230616",
+          "nombre": "Bernal Vargas Solis",
+          "apellido1": "Vargas",
+          "apellido2": "Solis",
+          "fecha_nacimiento": "2005-01-01",
+          "fecha_fallecimiento": null,
+          "genero": "Masculino",
+          "lugar_residencia": "Alajuela",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-26"
+        }
+      ],
+      "fecha_creacion": "2025-08-25",
+      "fecha_actualizacion": "2025-08-26"
+    }
+  },
+  "ultima_actualizacion": "2025-08-26T14:06:18.776553"
+}
