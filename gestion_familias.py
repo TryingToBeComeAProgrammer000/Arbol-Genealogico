@@ -82,7 +82,8 @@ class GestorFamilias:
     def listar_familias(self) -> List[Dict]:
         """Lista todas las familias"""
         return list(self.familias.values())
-    
+
+    #  ====== Gestion de integrantes de familias
     def insertar_miembro(self, familia_id: str, cedula: str, nombre: str, 
                         fecha_nacimiento: str, fecha_fallecimiento: str = None,
                         genero: str = "No especificado", lugar_residencia: str = "No especificado",
@@ -123,6 +124,65 @@ class GestorFamilias:
         
         return miembro
     
+    def editar_miembro(self, familia_id: str, cedula: str, nombre: str,
+                       fecha_nacimiento: str, fecha_fallecimiento: str = None,
+                       genero: str = "No especificado", lugar_residencia: str = "No especificado",
+                       estado_civil: str = "No especificado"):
+        """
+        Edita los datos de un miembro existente en una familia.
+        La cédula no se puede cambiar y se usa como identificador.
+        """
+        if familia_id not in self.familias:
+            raise ValueError("Familia no encontrada")
+
+        if not cedula or not nombre or not fecha_nacimiento:
+            raise ValueError("Cédula, nombre y fecha de nacimiento son obligatorios")
+
+        familia = self.familias[familia_id]
+        for i, miembro in enumerate(familia["miembros"]):
+            # Comparar cédulas como strings, eliminando espacios
+            if str(miembro.get("cedula", "")).strip() == str(cedula).strip():
+                # Extraer apellidos del nombre
+                apellidos = self._extraer_apellidos(nombre)
+
+                # Actualizar datos del miembro
+                familia["miembros"][i].update({
+                    "nombre": nombre,
+                    "apellido1": apellidos[0] if len(apellidos) > 0 else "",
+                    "apellido2": apellidos[1] if len(apellidos) > 1 else "",
+                    "fecha_nacimiento": self._corregir_fecha(fecha_nacimiento),
+                    "fecha_fallecimiento": fecha_fallecimiento,
+                    "genero": genero,
+                    "lugar_residencia": lugar_residencia,
+                    "estado_civil": estado_civil,
+                    "fecha_actualizacion": datetime.now().strftime("%Y-%m-%d")
+                })
+                
+                familia["fecha_actualizacion"] = datetime.now().strftime("%Y-%m-%d")
+                self._guardar_familias()
+                return familia["miembros"][i]  # Devolver el miembro actualizado
+
+        raise ValueError(f"Miembro con cédula {cedula} no encontrado en la familia {familia_id}")
+
+    def eliminar_miembro(self, familia_id: str, cedula: str):
+        """
+        Elimina un miembro de una familia por su cédula.
+        """
+        if familia_id not in self.familias:
+            raise ValueError("Familia no encontrada")
+
+        familia = self.familias[familia_id]
+        for i, miembro in enumerate(familia["miembros"]):
+            # Comparar cédulas como strings, eliminando espacios
+            if str(miembro.get("cedula", "")).strip() == str(cedula).strip():
+                # Eliminar el miembro
+                del familia["miembros"][i]
+                familia["fecha_actualizacion"] = datetime.now().strftime("%Y-%m-%d")
+                self._guardar_familias()
+                return True  # Indicar que se eliminó correctamente
+
+        raise ValueError(f"Miembro con cédula {cedula} no encontrado en la familia {familia_id}")
+
     def _corregir_fecha(self, fecha_str: str) -> str:
         """Corrige el formato de fecha si es necesario"""
         if not fecha_str:

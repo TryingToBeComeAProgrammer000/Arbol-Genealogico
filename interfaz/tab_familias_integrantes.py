@@ -39,7 +39,7 @@ class TabFamiliasIntegrantes:
                   command=self.actualizar_lista_familias).grid(row=0, column=2, padx=10, pady=10)
 
         # Formulario para nuevo miembro
-        form_frame = ttk.LabelFrame(main_frame, text="Registrar Nuevo Miembro")
+        form_frame = ttk.LabelFrame(main_frame, text="Gestionar Miembro")
         form_frame.pack(fill="x", pady=10, padx=10)
 
         # Primera fila
@@ -81,8 +81,9 @@ class TabFamiliasIntegrantes:
         self.estado_civil_combo.grid(row=3, column=1, padx=5, pady=5)
 
         # Botones de acción
+        # Crear un frame para los botones para mejor control del layout
         buttons_frame = ttk.Frame(form_frame)
-        buttons_frame.grid(row=3, column=3, padx=10, pady=10)
+        buttons_frame.grid(row=3, column=3, padx=10, pady=10, sticky="e")
 
         ttk.Button(buttons_frame, text="Registrar Miembro", 
                   command=self.registrar_miembro).pack(side="left", padx=2)
@@ -257,19 +258,13 @@ class TabFamiliasIntegrantes:
         if not cedula or not nombre or not fecha_nac:
             messagebox.showwarning("Advertencia", "Cédula, nombre y fecha de nacimiento son obligatorios")
             return
-            
-        # Verificar que la cédula no haya cambiado (esto es importante para la identificación)
-        item = self.members_tree.item(seleccion[0])
-        cedula_original = str(item['values'][0]).strip()  # Convertir a string y eliminar espacios
-        cedula_a_comparar = cedula.strip()  # Eliminar espacios de la cédula del formulario
-        
-        if cedula_a_comparar != cedula_original:
-            messagebox.showwarning("Advertencia", "No se puede cambiar la cédula de un miembro existente. Para cambiar la cédula, elimine y vuelva a crear el miembro.")
-            return
 
         try:
-            # Actualizar el miembro existente
-            self._actualizar_miembro_en_familia(familia_id, cedula_a_comparar, nombre, fecha_nac, fecha_fall, genero, provincia, estado_civil)
+            # Llamar al método del gestor para editar el miembro
+            miembro_actualizado = self.gestor.editar_miembro(
+                familia_id, cedula, nombre, fecha_nac, fecha_fall,
+                genero, provincia, estado_civil
+            )
             messagebox.showinfo("Éxito", "Miembro actualizado correctamente")
             
             # Limpiar formulario
@@ -282,43 +277,6 @@ class TabFamiliasIntegrantes:
             messagebox.showerror("Error", str(e))
         except Exception as e:
             messagebox.showerror("Error", f"Error al actualizar miembro: {e}")
-
-    def _actualizar_miembro_en_familia(self, familia_id, cedula, nombre, fecha_nac, fecha_fall, genero, provincia, estado_civil):
-        """Actualiza los datos de un miembro en la familia"""
-        # Obtener la familia
-        familia = self.gestor.obtener_familia(familia_id)
-        if not familia:
-            raise ValueError("Familia no encontrada")
-            
-        # Buscar el miembro por cédula y actualizarlo
-        for miembro in familia["miembros"]:
-            if str(miembro.get("cedula")).strip() == cedula:
-                # Extraer apellidos del nombre
-                partes = nombre.strip().split()
-                apellido1 = partes[1] if len(partes) > 1 else ""
-                apellido2 = partes[2] if len(partes) > 2 else ""
-                
-                # Actualizar datos
-                miembro["nombre"] = nombre
-                miembro["apellido1"] = apellido1
-                miembro["apellido2"] = apellido2
-                miembro["fecha_nacimiento"] = fecha_nac
-                miembro["fecha_fallecimiento"] = fecha_fall
-                miembro["genero"] = genero
-                miembro["lugar_residencia"] = provincia
-                miembro["estado_civil"] = estado_civil
-                miembro["fecha_actualizacion"] = self._obtener_fecha_actual()
-                
-                # Guardar cambios
-                self.gestor._guardar_familias()
-                return
-                
-        raise ValueError("Miembro no encontrado")
-
-    def _obtener_fecha_actual(self):
-        """Obtiene la fecha actual en formato YYYY-MM-DD"""
-        from datetime import datetime
-        return datetime.now().strftime("%Y-%m-%d")
 
     def eliminar_miembro(self):
         """Elimina un miembro de la familia"""
@@ -350,8 +308,8 @@ class TabFamiliasIntegrantes:
         cedula = str(item['values'][0]).strip()
         
         try:
-            # Eliminar el miembro de la familia
-            self._eliminar_miembro_de_familia(familia_id, cedula)
+            # Llamar al método del gestor para eliminar el miembro
+            self.gestor.eliminar_miembro(familia_id, cedula)
             messagebox.showinfo("Éxito", "Miembro eliminado correctamente")
             
             # Limpiar formulario
@@ -364,26 +322,6 @@ class TabFamiliasIntegrantes:
             messagebox.showerror("Error", str(e))
         except Exception as e:
             messagebox.showerror("Error", f"Error al eliminar miembro: {e}")
-
-    def _eliminar_miembro_de_familia(self, familia_id, cedula):
-        """Elimina un miembro de la familia por cédula"""
-        # Obtener la familia
-        familia = self.gestor.obtener_familia(familia_id)
-        if not familia:
-            raise ValueError("Familia no encontrada")
-            
-        # Buscar y eliminar el miembro por cédula
-        for i, miembro in enumerate(familia["miembros"]):
-            if str(miembro.get("cedula")).strip() == cedula:
-                # Eliminar el miembro
-                del familia["miembros"][i]
-                familia["fecha_actualizacion"] = self._obtener_fecha_actual()
-                
-                # Guardar cambios
-                self.gestor._guardar_familias()
-                return
-                
-        raise ValueError("Miembro no encontrado")
 
     def cargar_miembros_familia(self, event=None):
         """Carga los miembros de la familia seleccionada"""

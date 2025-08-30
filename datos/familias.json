@@ -53,10 +53,23 @@
           "lugar_residencia": "Cartago",
           "estado_civil": "Separado",
           "fecha_registro": "2025-08-25"
+        },
+        {
+          "cedula": "208990788",
+          "nombre": "Elena Arce Campos",
+          "apellido1": "Arce",
+          "apellido2": "Campos",
+          "fecha_nacimiento": "1990-12-11",
+          "fecha_fallecimiento": null,
+          "genero": "Femenino",
+          "lugar_residencia": "Cartago",
+          "estado_civil": "Soltero",
+          "fecha_registro": "2025-08-27",
+          "fecha_actualizacion": "2025-08-27"
         }
       ],
       "fecha_creacion": "2025-08-19",
-      "fecha_actualizacion": "2025-08-25"
+      "fecha_actualizacion": "2025-08-27"
     },
     "FAM002": {
       "id": "FAM002",
@@ -76,7 +89,7 @@
         }
       ],
       "fecha_creacion": "2025-08-24",
-      "fecha_actualizacion": "2025-08-24"
+      "fecha_actualizacion": "2025-08-27"
     },
     "FAM003": {
       "id": "FAM003",
@@ -307,10 +320,11 @@
           "apellido2": "",
           "fecha_nacimiento": "1975-01-01",
           "fecha_fallecimiento": null,
-          "genero": "Masculino",
+          "genero": "Femenino",
           "lugar_residencia": "Alajuela",
           "estado_civil": "Soltero",
-          "fecha_registro": "2025-08-26"
+          "fecha_registro": "2025-08-26",
+          "fecha_actualizacion": "2025-08-29"
         },
         {
           "cedula": "201230614",
@@ -350,8 +364,8 @@
         }
       ],
       "fecha_creacion": "2025-08-25",
-      "fecha_actualizacion": "2025-08-26"
+      "fecha_actualizacion": "2025-08-29"
     }
   },
-  "ultima_actualizacion": "2025-08-26T14:06:18.776553"
+  "ultima_actualizacion": "2025-08-29T17:46:54.876466"
 }

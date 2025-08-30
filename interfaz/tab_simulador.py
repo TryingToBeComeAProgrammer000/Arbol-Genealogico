@@ -29,6 +29,7 @@ class TabSimulador:
         self.perfil_seleccionado = None
         self._matrimonio_imgs = []
         self.cola_eventos = deque()
+        self._timer_id = None
 
         # Afinidades posibles para todos
         self.afinidades_posibles = [
@@ -111,7 +112,7 @@ class TabSimulador:
         frame_der = ttk.Frame(paned)
         paned.add(frame_der, weight=1)
 
-        ttk.Label(frame_der, text="Personas Activas", font=("Helvetica", 12, "bold")).pack(pady=5)
+        ttk.Label(frame_der, text="Personas", font=("Helvetica", 12, "bold")).pack(pady=5)
 
         # Lista de personas
         cols = ("Nombre", "Edad", "Género", "Estado")
@@ -163,6 +164,19 @@ class TabSimulador:
                     # Afinidades aleatorias
                     afinidades = random.choice(self.afinidades_posibles)
                     
+                    # --- Inicialización del umbral ---
+                    # Umbral base es 0.90
+                    umbral_base = 0.90
+                    # Si ya tiene más de 40 y está soltero, aplicar penalización por edad
+                    estado_civil = miembro.get("estado_civil", "Desconocido")
+                    umbral_pareja = umbral_base
+                    if edad >= 40 and estado_civil not in ["Casado", "Casada", "Unión Libre"]:
+                         # Calcular reducciones por edad: 10% a los 40, +10% cada 3 años
+                         años_exceso = edad - 40
+                         reducciones = 1 + (años_exceso // 3) # 1 por los 40, más uno cada 3 años
+                         for _ in range(reducciones):
+                             umbral_pareja *= 0.90 # Reducción del 10%
+                    
                     self.personas[cedula] = {
                         "cedula": cedula,
                         "nombre": miembro.get("nombre", f"Persona {cedula}"),
@@ -177,8 +191,12 @@ class TabSimulador:
                         "afinidades": afinidades,
                         "salud_emocional": 100,
                         "lugar_residencia": miembro.get("lugar_residencia", "Desconocido"),
-                        "estado_civil": miembro.get("estado_civil", "Desconocido"),
-                        "historial": [{"año": 0, "evento": "Nacimiento", "detalle": f"Nació en {fecha_nac}"}]
+                        "estado_civil": estado_civil,
+                        "historial": [{"año": 0, "evento": "Nacimiento", "detalle": f"Nació en {fecha_nac}"}],
+                        # --- Atributo de umbral ---
+                        "umbral_pareja": max(0.0, umbral_pareja), # Asegurar que no sea negativo
+                        # --- Atributo para identificar la familia de origen ---
+                        "familia_id": familia_id # <-- Nuevo atributo
                     }
             
             # Cargar relaciones desde relaciones.json si existe
@@ -213,6 +231,17 @@ class TabSimulador:
                     pareja = relaciones.get("pareja")
                     self.personas[cedula]["pareja"] = str(pareja) if pareja else None
                     
+                    # --- Asegurar que el umbral exista ---
+                    # Si se cargó de relaciones.json, es posible que no tenga 'umbral_pareja'
+                    if "umbral_pareja" not in self.personas[cedula]:
+                         self.personas[cedula]["umbral_pareja"] = 0.90
+                    
+                    # --- Aplicar penalización por viudez si es relevante ---
+                    # Esta lógica es compleja de aplicar aquí sin el historial completo.
+                    # Es más robusto manejarla en _fallecimientos cuando ocurre el evento.
+                    # Por ahora, asumimos que el umbral ya está correctamente calculado
+                    # o se corregirá dinámicamente al ocurrir el fallecimiento.
+
                     # Actualizar relaciones recíprocas
                     for padre_ced in self.personas[cedula]["padres"]:
                         if padre_ced in self.personas and cedula not in self.personas[padre_ced]["hijos"]:
@@ -230,6 +259,9 @@ class TabSimulador:
                         pareja_ced = self.personas[cedula]["pareja"]
                         if pareja_ced in self.personas:
                             self.personas[pareja_ced]["pareja"] = cedula
+                            # Asegurar que ambos tengan el umbral inicializado si falta
+                            if "umbral_pareja" not in self.personas[pareja_ced]:
+                                self.personas[pareja_ced]["umbral_pareja"] = 0.90
             
         except Exception as e:
             print(f"Advertencia: No se pudieron cargar relaciones existentes: {e}")
@@ -292,13 +324,14 @@ class TabSimulador:
         """Actualiza la lista de personas en la barra lateral"""
         self.tree.delete(*self.tree.get_children())
         for cedula, p in self.personas.items():
-            if p["fallecido"]:
-                continue
+           
+            estado = "Fallecido" if p["fallecido"] else ("Casado/a" if p["pareja"] else "Soltero/a")
             valores = (
                 p["nombre"],
                 p["edad"],
                 "Femenino" if p["genero"] == "F" else "Masculino",
-                "Casado/a" if p["pareja"] else "Soltero/a"
+                "Casado/a" if p["pareja"] else "Soltero/a",
+                estado
             )
             self.tree.insert("", "end", values=valores, tags=(str(cedula),))
 
@@ -312,9 +345,10 @@ class TabSimulador:
             return
 
         self.simulacion_activa = True
+    
         self.btn_iniciar.config(state="disabled")
         self.btn_detener.config(state="normal")
-        self.btn_reiniciar.config(state="normal")  # ✅ Habilitar botón de reiniciar
+        self.btn_reiniciar.config(state="normal")  # Habilitar botón de reiniciar
         self.btn_cargar_familias.config(state="disabled")
 
         self._dibujar_arbol()
@@ -335,7 +369,11 @@ class TabSimulador:
         self.btn_iniciar.config(state="normal")
         self.btn_detener.config(state="disabled")
         self.btn_cargar_familias.config(state="normal")
-        # ✅ Mantener el botón de reiniciar habilitado para poder reiniciar
+        # Mantener el botón de reiniciar habilitado para poder reiniciar
+
+        if self._timer_id is not None:
+            self.frame.after_cancel(self._timer_id)
+            self._timer_id = None
 
         # Limpiar hijos temporales
         cedulas_originales = set(str(key) for key in self.personas.keys())
@@ -349,13 +387,16 @@ class TabSimulador:
                 del self.personas[cedula]
         logger.info(f"{len(cedulas_temporales)} hijos temporales eliminados")
 
-    # ✅ Nuevo método para reiniciar la simulación
     def reiniciar_simulacion(self):
         """Reinicia la simulación desde cero"""
         # Detener la simulación si está activa
         if self.simulacion_activa:
             self.detener_simulacion()
         
+        if self._timer_id is not None:
+            self.frame.after_cancel(self._timer_id)
+            self._timer_id = None
+
         # Reiniciar variables
         self.año_actual = 0
         self.lbl_tiempo.config(text="Año: 0")
@@ -382,9 +423,7 @@ class TabSimulador:
         print("Simulación reiniciada")
 
     def _avanzar_tiempo(self):
-        if not self.simulacion_activa:
-            return
-
+        # NO HAY un 'if not self.simulacion_activa: return' prematuro aquí
         self.año_actual += 1
         self.lbl_tiempo.config(text=f"Año: {self.año_actual}")
 
@@ -398,15 +437,34 @@ class TabSimulador:
         if self.perfil_seleccionado:
             self._actualizar_vista_historial()
 
-        self.frame.after(10000, self._avanzar_tiempo)
-
+        self._timer_id = self.frame.after(10000, self._avanzar_tiempo)
+                
     def _cumpleaños(self):
         for p in list(self.personas.values()):
             if not p["fallecido"]:
+                edad_anterior = p["edad"]
                 p["edad"] += 1
                 if p["pareja"] is None and p["edad"] > 30:
                     p["salud_emocional"] = max(50, p["salud_emocional"] - 2)
                 self._registrar_evento(p["cedula"], "Cumpleaños", f"Cumplió {p['edad']} años")
+
+                # --- Actualizar umbral por edad ---
+                # Verificar si la persona cumplió 40 o múltiplos de 3 años después de los 40
+                if p["pareja"] is None and p["edad"] >= 40:
+                    # Calcular el umbral base (0.90) y aplicar todas las penalizaciones hasta la edad actual
+                    umbral_calculado = 0.90
+                    if p["edad"] >= 40:
+                        # Penalización a los 40 años
+                        umbral_calculado *= 0.90
+                        # Penalizaciones adicionales cada 3 años después de los 40
+                        años_exceso = p["edad"] - 40
+                        reducciones_adicionales = años_exceso // 3
+                        for _ in range(reducciones_adicionales):
+                            umbral_calculado *= 0.90
+                    
+                    # Actualizar el umbral en el objeto de la persona
+                    p["umbral_pareja"] = max(0.0, umbral_calculado)
+                    # print(f"Umbral actualizado para {p['nombre']} (edad {p['edad']}, soltero): {p['umbral_pareja']:.4f}") # Para depuración
 
     def _fallecimientos(self):
         for cedula in list(self.personas.keys()):
@@ -421,10 +479,22 @@ class TabSimulador:
                 self._registrar_evento(cedula, "Fallecimiento", "Falleció")
 
                 if p["pareja"]:
-                    pareja = self.personas.get(p["pareja"])
+                    pareja_ced = p["pareja"]
+                    pareja = self.personas.get(pareja_ced)
                     if pareja:
                         pareja["estado_civil"] = "Viudo"
-                        self._registrar_evento(p["pareja"], "Viudez", f"Falleció {p['nombre']}")
+                        self._registrar_evento(pareja_ced, "Viudez", f"Falleció {p['nombre']}")
+                        
+                        # --- Actualizar umbral del sobreviviente por viudez ---
+                        # Reducir el umbral en un 40% del valor actual
+                        if "umbral_pareja" in pareja:
+                            pareja["umbral_pareja"] *= 0.60 # Equivalente a reducir un 40%
+                            pareja["umbral_pareja"] = max(0.0, pareja["umbral_pareja"])
+                            # print(f"Umbral reducido por viudez para {pareja['nombre']}: {pareja['umbral_pareja']:.4f}") # Para depuración
+                        else:
+                            # Si no existía, inicializarlo y aplicar la penalización
+                            pareja["umbral_pareja"] = 0.90 * 0.60 # 0.54
+                        
 
                 # Si es padre y ambos padres mueren → asignar tutor
                 self._asignar_tutor_si_necesario(p)
@@ -512,7 +582,7 @@ class TabSimulador:
         Usa listas optimizadas con comprensión
         Dibuja línea de matrimonio inmediatamente
         """
-        # Lista optimizada con comprensión
+        # Lista optimizada con comprensión de solteros elegibles
         solteros = [
             p for p in self.personas.values()
             if p["pareja"] is None
@@ -534,11 +604,31 @@ class TabSimulador:
                 if p2["pareja"] is not None:
                     continue
 
+                # --- Verificaciones de restricciones ---
+                # 1. No emparejar personas del mismo género (ya existente, reforzada)
                 if p1["genero"] == p2["genero"]:
                     continue
 
+                # 2. No emparejar personas de la misma familia
+                if p1.get("familia_id") == p2.get("familia_id"):
+                    continue
+
+                # 3. No emparejar si la diferencia de edad es mayor a 15 años
+                if abs(p1["edad"] - p2["edad"]) > 15:
+                    continue
+
+                # Si pasan todas las restricciones, calcular compatibilidad
                 compatibilidad = self._indice_compatibilidad(p1, p2)
-                if compatibilidad > 0.7:
+                
+                # --- Usar umbral dinámico ---
+                # Obtener los umbrales de ambas personas
+                umbral_p1 = p1.get("umbral_pareja", 0.90)
+                umbral_p2 = p2.get("umbral_pareja", 0.90)
+                
+                # Para emparejar, la compatibilidad debe superar el umbral promedio
+                umbral_promedio = (umbral_p1 + umbral_p2) / 2.0
+                
+                if compatibilidad > umbral_promedio:
                     p1["pareja"] = p2["cedula"]
                     p2["pareja"] = p1["cedula"]
                     p1["estado_civil"] = "Casado"
@@ -670,7 +760,9 @@ class TabSimulador:
                 "año": self.año_actual,
                 "evento": "Nacimiento",
                 "detalle": f"Nació de {madre['nombre']} y {padre['nombre']} (afinidades: {', '.join(afinidades)})"
-            }]
+            }],
+            # --- Inicializar umbral para el nuevo hijo ---
+            "umbral_pareja": 0.90 # Los recién nacidos (edad 0) comienzan con el umbral base
         }
 
         self.personas[cedula] = hijo

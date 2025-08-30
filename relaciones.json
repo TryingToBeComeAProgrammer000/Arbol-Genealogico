@@ -250,6 +250,90 @@
         "primos": [],
         "generacion": 0
       }
+    },
+    "201230559": {
+      "nombre": "Persona 201230559",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "hermanos": [
+          "201230600",
+          "201230601"
+        ],
+        "pareja": null,
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
+    },
+    "201230600": {
+      "nombre": "Persona 201230600",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "hermanos": [
+          "201230559",
+          "201230601"
+        ],
+        "pareja": null,
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
+    },
+    "201230601": {
+      "nombre": "Persona 201230601",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "hermanos": [
+          "201230559",
+          "201230600"
+        ],
+        "pareja": null,
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
+    },
+    "201230610": {
+      "nombre": "Persona 201230610",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "hermanos": [],
+        "pareja": "201230603",
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
+    },
+    "201230603": {
+      "nombre": "Persona 201230603",
+      "relaciones": {
+        "padres": [],
+        "hijos": [],
+        "hermanos": [],
+        "pareja": "201230610",
+        "abuelos": [],
+        "nietos": [],
+        "tios": [],
+        "sobrinos": [],
+        "primos": [],
+        "generacion": 0
+      }
     }
   },
   "registros_relaciones": [
@@ -264,6 +348,54 @@
       "relacion": "hijo",
       "con": "203330333",
       "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230559",
+      "relacion": "hermano",
+      "con": "201230600",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230600",
+      "relacion": "hermano",
+      "con": "201230559",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230559",
+      "relacion": "hermano",
+      "con": "201230601",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230601",
+      "relacion": "hermano",
+      "con": "201230559",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230600",
+      "relacion": "hermano",
+      "con": "201230601",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230601",
+      "relacion": "hermano",
+      "con": "201230600",
+      "tipo": "biológico"
+    },
+    {
+      "persona_id": "201230610",
+      "relacion": "pareja",
+      "con": "201230603",
+      "tipo": "casado"
+    },
+    {
+      "persona_id": "201230603",
+      "relacion": "pareja",
+      "con": "201230610",
+      "tipo": "casado"
     }
   ]
 }
